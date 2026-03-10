@@ -135,17 +135,17 @@ Swagger UI: http://127.0.0.1:8000/api/docs/
 
 OpenAPI schema: http://127.0.0.1:8000/api/schema/
 
-Основные endpoints
-Аутентификация
+#####Основные endpoints
+####Аутентификация
 Метод	URL	Описание
 POST	/api/token/	Получение JWT токена
 POST	/api/token/refresh/	Обновление JWT токена
-Пользователи
+######Пользователи
 Метод	URL	Описание
 POST	/api/users/	Регистрация (доступно без токена)
 GET	/api/users/	Список пользователей
 GET	/api/users/{id}/	Детали пользователя
-Авторы
+######Авторы
 Метод	URL	Описание
 GET	/api/authors/	Список авторов
 POST	/api/authors/	Создание автора
@@ -153,7 +153,7 @@ GET	/api/authors/my_authors/	Мои авторы
 GET	/api/authors/{id}/	Детали автора
 PUT/PATCH	/api/authors/{id}/	Обновление автора
 DELETE	/api/authors/{id}/	Удаление автора
-Книги
+######Книги
 Метод	URL	Описание
 GET	/api/books/	Список книг (с поиском)
 POST	/api/books/	Создание книги
@@ -161,19 +161,19 @@ GET	/api/books/my_books/	Мои книги
 GET	/api/books/{id}/	Детали книги
 PUT/PATCH	/api/books/{id}/	Обновление книги
 DELETE	/api/books/{id}/	Удаление книги
-Выдачи
+######Выдачи
 Метод	URL	Описание
 GET	/api/loans/	Список выдач
 POST	/api/loans/	Создание выдачи
 GET	/api/loans/active/	Активные выдачи
 POST	/api/loans/{id}/return_book/	Возврат книги
 🔍 Поиск и фильтрация
-Поиск книг
+######Поиск книг
 text
 GET /api/books/?search=война
 Поиск по: названию, имени автора, фамилии автора, жанру
 
-Фильтрация по жанру
+######Фильтрация по жанру
 text
 GET /api/books/?genre=Роман
 Фильтрация по создателю
