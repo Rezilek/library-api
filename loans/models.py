@@ -3,8 +3,16 @@ from django.conf import settings
 from books.models import Book
 
 class Loan(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='loans')
-    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='loans')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='loans'
+    )
+    book = models.ForeignKey(
+        Book, 
+        on_delete=models.CASCADE, 
+        related_name='loans'
+    )
     loan_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateField()
     return_date = models.DateField(blank=True, null=True)
@@ -14,6 +22,17 @@ class Loan(models.Model):
         ('overdue', 'Просрочена'),
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='loans_created'
+    )
     
     def __str__(self):
         return f'{self.user.username} - {self.book.title}'
+    
+    class Meta:
+        permissions = [
+            ('can_edit_all_loans', 'Can edit all loans'),
+        ]
